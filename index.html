@@ -15,19 +15,19 @@
     <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
 
     <script>
-        // Инициализация TON Connect с указанием ссылки на манифест
-        const tonConnect = new TonConnectSDK.TonConnect({
-            manifestUrl: 'https://snyatass.github.io/tonconnect-manifest.json' // Укажи ссылку на манифест
+        // Создаем экземпляр TonConnect SDK с указанием манифеста
+        const tonConnect = new TonConnect({
+            manifestUrl: 'https://snyatass/tonconnect-manifest.json' // Укажи ссылку на манифест
         });
 
         const payButton = document.getElementById("pay-button");
         let connectedWallet;
 
-        // Создаем кнопку TON Connect UI
-        TonConnectUI.createConnectButton({
+        // Создаем кнопку подключения с использованием TonConnectButton
+        const tonConnectButton = new TonConnectUI.TonConnectButton({
             tonConnectInstance: tonConnect,
             element: document.getElementById("ton-connect-button"),
-            walletsList: ['Tonkeeper', 'Ton Wallet'],
+            walletsList: ['Tonkeeper', 'Ton Wallet'], // Указываем поддерживаемые кошельки
             onConnect: (wallet) => {
                 connectedWallet = wallet;
                 payButton.disabled = false;
@@ -40,6 +40,7 @@
             },
         });
 
+        // Логика кнопки оплаты
         payButton.onclick = async () => {
             if (!connectedWallet) return alert("Сначала подключите кошелек!");
 
