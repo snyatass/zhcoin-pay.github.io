@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата TON через TON Connect</title>
+</head>
+<body>
+    <h2>Подключитесь и оплатите через TON</h2>
+    <button id="connect-button">Подключить кошелек</button>
+    <button id="pay-button" disabled>Оплатить TON</button>
+
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
+    <script>
+        const connectButton = document.getElementById("connect-button");
+        const payButton = document.getElementById("pay-button");
+
+        const tonConnect = new TonConnect();
+        let connectedWallet;
+
+        connectButton.onclick = async () => {
+            try {
+                const wallet = await tonConnect.connectWallet();
+                connectedWallet = wallet;
+                payButton.disabled = false;
+                alert(`Кошелек ${wallet.walletAddress} подключен!`);
+            } catch (error) {
+                console.error("Ошибка подключения кошелька:", error);
+            }
+        };
+
+        payButton.onclick = async () => {
+            if (!connectedWallet) return alert("Сначала подключите кошелек!");
+
+            const amount = 1000000; // укажите сумму в нанотонах
+            const tx = {
+                validUntil: Math.floor(Date.now() / 1000) + 300,
+                messages: [
+                    {
+                        address: "UQClb-98Ern5j-unWmqytlHXYclrWWwX_fSrUk4kIPAnJsB9", // адрес для оплаты
+                        amount: amount.toString(),
+                    },
+                ],
+            };
+
+            try {
+                await connectedWallet.sendTransaction(tx);
+                alert("Оплата успешно прошла!");
+            } catch (error) {
+                console.error("Ошибка при отправке транзакции:", error);
+            }
+        };
+    </script>
+</body>
+</html>
