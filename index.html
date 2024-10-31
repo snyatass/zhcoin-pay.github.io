@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Подключитесь и оплатите через TON</h2>
-    <button id="connect-button">Подключить кошелек</button>
+    <div id="ton-connect-button"></div>
     <button id="pay-button" disabled>Оплатить TON</button>
 
     <!-- Подключаем библиотеки TON Connect UI и SDK -->
@@ -15,36 +15,40 @@
     <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
 
     <script>
-        // Подключаем TON Connect
+        // Инициализация TON Connect с указанием ссылки на манифест
         const tonConnect = new TonConnectSDK.TonConnect({
             manifestUrl: 'https://your-website.com/tonconnect-manifest.json' // Укажи ссылку на манифест
         });
 
-        const connectButton = document.getElementById("connect-button");
         const payButton = document.getElementById("pay-button");
-
         let connectedWallet;
 
-        connectButton.onclick = async () => {
-            try {
-                const wallet = await tonConnect.connect();
+        // Создаем кнопку TON Connect UI
+        TonConnectUI.createConnectButton({
+            tonConnectInstance: tonConnect,
+            element: document.getElementById("ton-connect-button"),
+            walletsList: ['Tonkeeper', 'Ton Wallet'],
+            onConnect: (wallet) => {
                 connectedWallet = wallet;
                 payButton.disabled = false;
-                alert(`Кошелек ${wallet.address} подключен!`);
-            } catch (error) {
-                console.error("Ошибка подключения кошелька:", error);
-            }
-        };
+                alert(`Кошелек ${wallet.account.address} подключен!`);
+            },
+            onDisconnect: () => {
+                connectedWallet = null;
+                payButton.disabled = true;
+                alert("Кошелек отключен.");
+            },
+        });
 
         payButton.onclick = async () => {
             if (!connectedWallet) return alert("Сначала подключите кошелек!");
 
-            const amount = 1000000000; // Укажите сумму в нанотонах
+            const amount = 10000000; // Укажите сумму в нанотонах
             const tx = {
                 validUntil: Math.floor(Date.now() / 1000) + 300,
                 messages: [
                     {
-                        address: "UQClb-98Ern5j-unWmqytlHXYclrWWwX_fSrUk4kIPAnJsB9", // Адрес для оплаты
+                        address: UQClb-98Ern5j-unWmqytlHXYclrWWwX_fSrUk4kIPAnJsB9", // Адрес для оплаты
                         amount: amount.toString(),
                     },
                 ],
