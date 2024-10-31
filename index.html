@@ -19,7 +19,8 @@
         if (typeof TonConnect !== "undefined") {
             // Инициализация TonConnect SDK с указанием манифеста
             const tonConnect = new TonConnect.TonConnect({
-                manifestUrl: 'https://snyatass.github.io/tonconnect-manifest.json' // Укажи ссылку на манифест
+                manifestUrl: 'https://snyatass.github.io/tonconnect-manifest.json',// Укажи ссылку на манифест
+                buttonRootId: 'ton-connect-button'
             });
 
             const payButton = document.getElementById("pay-button");
