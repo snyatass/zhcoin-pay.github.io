@@ -9,12 +9,31 @@
 <body>
     <h2>Подключитесь и оплатите через TON</h2>
     <div id="connect"></div>
+    <button onclick="transaction()" >Send TON</button>
 
     <script>
       const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
           manifestUrl: 'https://snyatass.github.io/tonconnect-manifest.json',
           buttonRootId: 'connect'
       });
+
+        async function transaction() {
+            validUntil: Math.round(Date.now() / 1000) + 10,
+            messages: [
+                {
+                    address: "",
+                    amount: ""
+                }
+            ]
+        };
+
+        try {
+            await tonConnectUI.sendTransaction(transaction);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+            
     </script>
 </body>
 </html>
