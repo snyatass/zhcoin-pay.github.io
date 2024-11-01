@@ -4,70 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Оплата TON через TON Connect</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 <body>
     <h2>Подключитесь и оплатите через TON</h2>
-    <div id="ton-connect-button"></div>
-    <button id="pay-button" disabled>Оплатить TON</button>
-
-    <!-- Подключаем библиотеки TON Connect UI и SDK -->
+    <div id="connect"></div>
 
     <script>
-        // Проверяем, что TonConnect загружен
-        if (typeof TonConnect !== "undefined") {
-            // Инициализация TonConnect SDK с указанием манифеста
-            const tonConnect = new TonConnect.TonConnect({
-                manifestUrl: 'https://snyatass.github.io/tonconnect-manifest.json',// Укажи ссылку на манифест
-                buttonRootId: 'ton-connect-button'
-            });
-
-            const payButton = document.getElementById("pay-button");
-            let connectedWallet;
-
-            // Создаем кнопку для подключения TonConnect
-            const tonConnectButton = new TonConnectUI.TonConnectButton({
-                tonConnectInstance: tonConnect,
-                element: document.getElementById("ton-connect-button"),
-                walletsList: ['Tonkeeper', 'Ton Wallet'], // Указываем поддерживаемые кошельки
-                onConnect: (wallet) => {
-                    connectedWallet = wallet;
-                    payButton.disabled = false;
-                    alert(`Кошелек ${wallet.account.address} подключен!`);
-                },
-                onDisconnect: () => {
-                    connectedWallet = null;
-                    payButton.disabled = true;
-                    alert("Кошелек отключен.");
-                },
-            });
-
-            // Логика кнопки оплаты
-            payButton.onclick = async () => {
-                if (!connectedWallet) return alert("Сначала подключите кошелек!");
-
-                const amount = 10000000; // Укажите сумму в нанотонах
-                const tx = {
-                    validUntil: Math.floor(Date.now() / 1000) + 300,
-                    messages: [
-                        {
-                            address: "UQClb-98Ern5j-unWmqytlHXYclrWWwX_fSrUk4kIPAnJsB9", // Адрес для оплаты
-                            amount: amount.toString(),
-                        },
-                    ],
-                };
-
-                try {
-                    await connectedWallet.sendTransaction(tx);
-                    alert("Оплата успешно прошла!");
-                } catch (error) {
-                    console.error("Ошибка при отправке транзакции:", error);
-                }
-            };
-        } else {
-            console.error("TonConnect SDK не был загружен.");
-        }
+      const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+          manifestUrl: 'https://snyatass.github.io/tonconnect-manifest.json',
+          buttonRootId: 'connect'
+      });
     </script>
 </body>
 </html>
