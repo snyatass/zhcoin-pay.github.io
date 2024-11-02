@@ -3,38 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оплата TON через TON Connect</title>
+    <title>Оплата через TON Connect</title>
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tonweb@latest/dist/tonweb.min.js"></script>
 </head>
 <body>
     <h2>Подключитесь и оплатите через TON</h2>
     <div id="connect" style="position: absolute; top: 2%; right:2%"></div>
-    <button onclick="transaction()" >Send TON</button>
+    <button id="payButton" style="margin-top: 20px;">Оплатить</button>
 
     <script>
-      const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-          manifestUrl: 'https://snyatass.github.io/zhcoin-pay.github.io/tonconnect-manifest.json',
-          buttonRootId: 'connect'
-      });
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'https://snyatass.github.io/zhcoin-pay.github.io/tonconnect-manifest.json',
+            buttonRootId: 'connect'
+        });
 
-        async function transaction() {
-            const transaction = {
-            validUntil: Math.round(Date.now() / 1000) + 10,
-            messages: [
-                {
-                    address: "UQClb-98Ern5j-unWmqytlHXYclrWWwX_fSrUk4kIPAnJsB9",
-                    amount: "100000"
+        document.getElementById('payButton').onclick = async function () {
+            try {
+                const walletConnected = tonConnectUI.wallet;
+                if (!walletConnected) {
+                    alert("Сначала подключите кошелек TON.");
+                    return;
                 }
-            ]
-        };
 
-        try {
-            await tonConnectUI.sendTransaction(transaction);
-        } catch (e) {
-            console.error(e);
+                // Настройка отправки с использованием TonWeb
+                const tonweb = new TonWeb(new TonWeb.HttpProvider('https://toncenter.com/api/v2/jsonRPC', {
+                    apiKey: '1a60ee95667a9623a7f5fb2a968cc594d1371c8a54f1829383f75f130f69cbd0' // Замените на ваш API-ключ
+                }));
+
+                const destinationAddress = new TonWeb.Address('UQClb-98Ern5j-unWmqytlHXYclrWWwX_fSrUk4kIPAnJsB9');
+
+                const jettonTransferBody = new TonWeb.boc.Cell();
+                jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
+                jettonTransferBody.bits.writeUint(0, 64); // query id
+                jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('2')); // jetton amount
+                jettonTransferBody.bits.writeAddress(destinationAddress);
+                jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
+                jettonTransferBody.bits.writeBit(false); // no custom payload
+                jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.02')); // forward amount
+                jettonTransferBody.bits.writeBit(true);
+
+                const transaction = {
+                    validUntil: Math.floor(Date.now() / 1000) + 600,
+                    messages: [
+                        {
+                            address: destinationAddress.toString(true, true, true),
+                            amount: TonWeb.utils.toNano("0.01").toString(), // Сумма в TON
+                            bounce: false,
+                            payload: jettonTransferBody
+                        }
+                    ]
+                };
+
+                console.log("Отправка транзакции:", transaction);
+                alert("Транзакция отправляется в кошелек для подтверждения.");
+
+                // Отправка транзакции в кошелек
+                const response = await tonConnectUI.sendTransaction(transaction);
+                console.log("Ответ от кошелька:", response);
+
+                alert("Токены отправлены успешно!");
+            } catch (error) {
+                console.error("Ошибка при отправке:", error);
+                alert("Ошибка при отправке, попробуйте еще раз.");
+            }
+        };
+        fetch('https://toncenter.com/api/v2/jsonRPC', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY'
+    },
+    body: JSON.stringify({
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "getTransactions",
+        "params": {
+            "address": "YOUR_ADDRESS",
+            "limit": 5
         }
-    }
-            
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
     </script>
 </body>
 </html>
