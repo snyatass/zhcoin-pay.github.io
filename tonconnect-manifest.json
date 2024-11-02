@@ -1,9 +1,19 @@
 {
-    "version": "1.0",
+    "url": "https://snyatass.github.io", 
     "name": "ZHAROV COIN",
-    "url": "https://snyatass.github.io/zhcoin-pay.github.io/",
-    "icon": "https://cache.tonapi.io/imgproxy/BD92204OGA4L_CCIIXB3O9SXIhT0p71V_Ykj_2fuGkE/rs:fill:200:200:1/g:no/aHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2ZpZmUvQUxzNmpfRW1SclVVR1Z4NXhRNVUta1BUUnlzZDZKMlREZm1kS2F1MHFmV3oydFFENjlNMVNmQnZXZnduOUpvbkRQMER4ak1rRFhZYnBKQXNBWFk5bU5XZnQ0M2FuMm1DNlI3XzFTSGNRRk5XRFVxcjdVbGtKd3JHakRDQWJ0ZkQ4d3IyVUxQZnZpRlk4LS1GRm0tdmV2bUZuNW9YUVhaaDRHZV9ncFhQenA1R0dsZWFMUERjRWxsTjh4Q2N0NzRwYVNFWk1xcS1MNFF1XzJvOGwwNFpmbkh3X2lrQVdHdkUwZ3lJSXhYYUtFT0tzcnVudlNVaUQxUWc1UlhlUE9Cb0xCd1U4bFZCNHktbWEtZU1Mbk5xZzZ3NVNJLW1Xc1FKa1RTdF9NVzlORk13NHZkXzUzRjJRbUtpdUNIMzlTdGNvQU1tYk5PN0pucGc5TXZRdnNvNVVsbDhlMlFYVlgweUJuQ2xmdFAxY0hTbEdJQ3ZYWVlHVXAxdG91cFBLNVRuQjZLaVZGcEc4WHpSdVpWajY2bWZYdHFobXRMOGFOTldLRlN3WWpneVdMZkdVU1hEMHNxYm9Mb2l3dWJycWVGTUEzS1p6MXpoa3RMWWxaQlVEZnV5YTZQMUppZDhxUTF1R1Fzb1p1c1lkNG5EdHM2THRUOXhMdWt6aklaYWNIdGJrYzNnaDRaWVU0UjNJaDVzeHloOThzeTE3X1g0YldtV0paZVlIc3U3djN3Y2lIa3BweC1HRUE4UnIySXVraFVPRV9IaVZzNFBpS0pQbU03SWExeE9OMmdvZTNuM0xSOWRaOG5xZ3psUHVZUFNYa0dlbENaenpONFZsUmlONlV1TVVJVzdHVkJFemVvcTVPM0hkUWlSN1NONTdFRVMzOU1tbFpuZTg5Y1lvbi1mU1dDYlh2LXB5MWdOQnRNN05MeWxmLWUwMGVkdXQ0Qk0wOVdFT1lBdWxBcDFYMlVnQk5oQkFDQ0FyV3N4QjFXRmQ4bVFmTzJudV80ZzRLTWkzXzkzbV9NSHNqbkxTS0hFWXd4a0Q5TTgtSnF1SVpnbE44WFE5NlNYWnp3TlIxY0owRk1KUk1UUG0ySmFCSGtJdUJCbTB1RkVnVTljQWd3SS0zV3Y5cU5vRmRIS0RRczYzdGlMYTJQN3k4QnB5TkY4OTF1dnNXMEN2ejJMTE9KZ1J0bTE3SEN1NTlhZGdZMEl1YURyZGQ0Y3RnTl9QSFhGSmwyRE94S2NMYTJtQmhTQ0xIdjZmS3l2dGljMXRHbzI2UnlKRVNNekVyV2s5cmtEdDZXUkRBcks5T1pHXy1fRHRzT2l4OGhuZXQzWlF4QS12WWU0bmdiaGN1ajNSVkJhejZmZnBoUGZNTGg2UXZJX0lKNnhDeUR5aVg4eHdFRUJsRVFpdTNOTVh1VHVDaFI3dGF2X3dUM1ZvWnF4REtLbnlZNFhUZllyQ2x3elVqTGRyY2lvZDlESTFpenBpYm83b01lMS1ZRXUxWmZvNVNkclR2a2FPZGYwX1VyeFM2VnRRcTIwUzZXc09DUkhwYk9VMHJfMkhnZVVEMVEtdzlqRTVObWN5MFprazhvWEp1Q2tIT2k0MGE0dy1CLWg3N3lmVUpCd2dFYnBiM2RTVWZRU0pRd0N6WW9zcnZqWVczd3luMUExQWllR3lzeGlSZHBFeWVWdGw1YnJ0TF8wY1E3OVVEZS12T1BBRWVRRk1zWWh5ZVctbW1pNGwydVVEM3RLcEJqTy1zaHFfLWw3a19pYUVEUUVPTzhiVUVIVFdHN1FCaVdoci1vSE1zLUdRQ0NtZk1oQmFYaG5pODJzWGJib0RYcmNRM0hsdnNRNDJld1ktbFNVU2FPWmdjcUd4NjEyMFhwSGVjbWpuRHBkbTdGRVNxMktPYUgwanhHcEU5eVBvaUo3Wk0wcUxxN2U3ZGxQOEpyakpYQldmQlZMNk5ISHB5Y0NBSHRYZGRiQzZUYWFYUTBSenFYWjkzdGd5MUlrVzdKMWtlV0xYOUZDX2QtU1pkZGVaRFlwYmFCZFdiSXZyWVpCMjgydU5UcVFxMk1teEx5RjNYSFJ0QlFpaUhhSlFKQUJvWjRaTXdRNlRwdFJIeWdZZjRJX2VjbW95Nld3VHdqZVQ4d01udThTdTlGajQ2OTlZNjZiVVZKTnBlU2g4V1VBSUJpNVhVdjF1UUpNeDVweUUtaWJLNEx3dUNlVkowM1VNcER6REdzelBVWFNmTlZPelZDaWF2OE5ZZjYyRUlRS2dnbHd5c3hfSF9jN0lRZFF5cDI3VVl6VVBiQnJfTGY5VWVCc0VMalVqX0EteXREVmJmaFFhdXRXQldFY2xUeGRhU2hBWE1CSWtnWlBTSmt0d3p5LXhUdnp3QURBUWhsODJ3UV9GcllDeEpNTTlZdGpPUktGc0d4cloxeEdqMWJ3WHFBdzBjNkJHYnpXV1hiSlZnPXcxOTIwLWg5MTI.webp",
-    "description": "Your App Description",
-    "blockchain": "ton",
-    "supportedWallets": ["tonkeeper", "other-wallets"]
-  }
+    "iconUrl": "https://ton.connect.github.io/demo-dapp/apple-touch-icon.png",
+    "description": "Оплата и взаимодействие с ZHAROV COIN.",
+    "startUrl": "https://snyatass.github.io",
+    "scope": "https://snyatass.github.io/",
+    "blockchain": "ton",    
+    "version": "1.0",
+    "permissions": {
+        "wallets": ["ton_wallet"],
+        "jettons": ["jetton_wallet_v2"]
+    },
+    "interfaces": {
+        "jetton_wallet_v2": {
+            "methods": ["transfer", "notify"]
+        }
+    }
+}
