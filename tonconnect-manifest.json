@@ -1,16 +1,5 @@
 {
     "url": "https://snyatass.github.io/zhcoin-pay.github.io", 
     "name": "ZHAROV COIN",
-    "iconUrl": "https://ton.connect.github.io/demo-dapp/apple-touch-icon.png",
-    "description": "Оплата и взаимодействие с ZHAROV COIN.",
-    "blockchain": "ton",    
-    "permissions": {
-        "wallets": ["ton_wallet"],
-        "jettons": ["jetton_wallet_v2"]
-    },
-    "interfaces": {
-        "jetton_wallet_v2": {
-            "methods": ["transfer", "notify"]
-        }
-    }
+    "iconUrl": "https://ton.connect.github.io/demo-dapp/apple-touch-icon.png"
 }
