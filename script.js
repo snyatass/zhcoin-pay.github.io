@@ -1,6 +1,6 @@
 async function getBalance() {
     try {
-        const response = await fetch("/get-balance");
+        const response = await fetch("https://zhcoin-pay-github-io-acxh-lt5vvtts1-snyatass-projects.vercel.app/get-balance");
         const data = await response.json();
         document.getElementById("balance").innerText = `Баланс: ${data.balance} звёзд`;
     } catch (error) {
