@@ -10,12 +10,12 @@ async function getBalance() {
 
 async function payWithStar() {
     try {
-        const response = await fetch("/pay-star", {
+        const response = await fetch("https://zhcoin-pay-github-io-acxh-lt5vvtts1-snyatass-projects.vercel.app/pay-star", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ amount: 1 }),
+            body: JSON.stringify({ amount: 1 }), // Указываем, сколько звёзд оплачиваем
         });
 
         const result = await response.json();
