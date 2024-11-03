@@ -1,13 +1,13 @@
 const express = require("express");
-const cors = require("cors"); // Подключаем cors
 const app = express();
 
-// Используем cors middleware
-app.use(cors({
-    origin: "https://snyatass.github.io", // Разрешаем запросы только с этого домена
-    methods: ["GET", "POST"], // Разрешаем только GET и POST методы
-    allowedHeaders: ["Content-Type"] // Разрешаем только Content-Type заголовок
-}));
+// Разрешаем CORS для всех источников (для тестирования)
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // Разрешаем все источники
+    res.header("Access-Control-Allow-Methods", "GET, POST"); // Разрешаем GET и POST
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    next();
+});
 
 app.use(express.json());
 app.use(express.static(__dirname)); // Обслуживание статических файлов из корня проекта
