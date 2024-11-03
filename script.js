@@ -1,13 +1,3 @@
-async function getBalance() {
-    try {
-        const response = await fetch("https://zhcoin-pay-github-io-acxh-lt5vvtts1-snyatass-projects.vercel.app/get-balance");
-        const data = await response.json();
-        document.getElementById("balance").innerText = `Баланс: ${data.balance} звёзд`;
-    } catch (error) {
-        document.getElementById("balance").innerText = "Ошибка загрузки баланса";
-    }
-}
-
 async function payWithStar() {
     try {
         const response = await fetch("https://zhcoin-pay-github-io-acxh-lt5vvtts1-snyatass-projects.vercel.app/pay-star", {
@@ -21,14 +11,10 @@ async function payWithStar() {
         const result = await response.json();
         if (result.success) {
             alert("Оплата успешно проведена!");
-            getBalance(); // Обновляем баланс после оплаты
         } else {
-            alert(result.message || "Недостаточно звёзд для оплаты.");
+            alert(result.message || "Неизвестная ошибка при оплате.");
         }
     } catch (error) {
         alert("Произошла ошибка при оплате.");
     }
 }
-
-// Загрузка баланса при открытии страницы
-getBalance();
