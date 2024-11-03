@@ -10,7 +10,7 @@ async function payWithStar() {
 
         const result = await response.json();
         if (result.success) {
-            alert("Оплата успешно проведена!");
+            alert("Оплата успешно проведена");
         } else {
             alert(result.message || "Неизвестная ошибка при оплате.");
         }
