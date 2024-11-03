@@ -16,25 +16,18 @@ const users = {
     "user_id": { balance: 5 } // Пример данных пользователя с балансом 5 звёзд
 };
 
-app.get("/get-balance", (req, res) => {
-    const userId = "user_id"; // Замените на реальный идентификатор пользователя
-    const user = users[userId];
-    if (user) {
-        res.json({ balance: user.balance });
-    } else {
-        res.status(404).json({ message: "Пользователь не найден" });
-    }
-});
-
 app.post("/pay-star", (req, res) => {
     const userId = "user_id"; // Замените на реальный идентификатор пользователя
     const user = users[userId];
+    
+    // Проверяем, указано ли количество звёзд для списания
+    const amount = req.body.amount || 1; // По умолчанию списываем 1 звезду
 
-    if (user && user.balance >= 1) {
-        user.balance -= 1;
-        res.json({ success: true });
+    if (user && user.balance >= amount) {
+        user.balance -= amount; // Списываем звезды
+        res.json({ success: true }); // Возвращаем успешный ответ
     } else {
-        res.json({ success: false, message: "Недостаточно звёзд" });
+        res.json({ success: false, message: "Недостаточно звёзд для оплаты." });
     }
 });
 
