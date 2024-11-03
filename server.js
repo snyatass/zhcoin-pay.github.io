@@ -1,19 +1,17 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
-// Разрешаем CORS для всех источников (для тестирования)
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Разрешаем все источники
-    res.header("Access-Control-Allow-Methods", "GET, POST"); // Разрешаем GET и POST
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    next();
-});
+app.use(cors({
+    origin: "https://snyatass.github.io", // Укажите здесь ваш источник
+    methods: ["POST", "GET"],
+    allowedHeaders: ["Content-Type"]
+}));
 
 app.use(express.json());
-app.use(express.static(__dirname)); // Обслуживание статических файлов из корня проекта
 
 const users = {
-    "user_id": { balance: 5 } // Пример данных пользователя с балансом 5 звёзд
+    "user_id": { balance: 2 } // Пример данных пользователя с балансом 5 звёзд
 };
 
 app.post("/pay-star", (req, res) => {
